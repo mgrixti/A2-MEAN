@@ -1,0 +1,12 @@
+{
+  "author": "Joseph, Matt, Baldwin, Philip",
+  "name": "WEB-3_Assignment2",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:abcd134/A2-MEAN.git"
+  },
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
