@@ -7,6 +7,7 @@
     "url": "git@github.com:abcd134/A2-MEAN.git"
   },
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "mongoose": "^4.4.7"
   }
 }
