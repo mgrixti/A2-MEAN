@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="TestLogin.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app="app" ng-controller="main">
+    <input type="text" ng-model="userName" placeholder="Enter Username"/> <span ng-show="unProb">{{UsernameProblem}}</span>
+    <br/>
+    <input type="text" ng-model="password" placeholder="Enter Password"/> <span ng-show="pwProb">{{PasswordProblem}}</span>
+    <br/>
+    <button ng-click="login()">Login</button>
+</body>
+</html>
