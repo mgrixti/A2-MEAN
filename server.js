@@ -22,6 +22,7 @@ router.route('/employees')
         });
     });
 
+var ocean;
 // Get 'to-do' by the  employee's ID
 router.route('/todo/:employeeID')
     .get(function(req, res) { // Get all 'todo's for a single employee
@@ -51,6 +52,28 @@ router.route('/todo/:employeeID/:todoID')
                 res.json(result);
         });
     });
+
+router.route('/messages/:employeeID/:messageID')
+    // Get specific to-do item for an employee
+    // Right now it filters the to-do programatically, but I would have liked to do it at DB level
+    .get(function(req,res) {
+        employee.findOne({id: req.params.employeeID}, function(error, data){
+            var messages;
+            for(var i = 0; i < data.messages.length; i++){
+                if(data.messages[i].id == req.params.messageID){
+                    res.json(data.messages[i]);
+                }
+            }
+        });
+    });
+// MESSAGES Routes
+router.route('/messages/:employeeID')
+    .get(function(req, res) { // Get all 'todo's for a single employee
+        employee.findOne({id: req.params.employeeID}, 'messages', function (err, data){
+            res.json(data);
+        });
+    });
+
 
 // all paths on router will have /api/ added to their route
 app.use('/api', router);
