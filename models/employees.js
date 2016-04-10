@@ -9,6 +9,32 @@ var ToDoSchema = new Schema({
     id: Number
 });
 
+var UniversitySchema = new Schema({
+    id: Number,
+    name: String,
+    address: String,
+    city: String,
+    state: String,
+    zip: Number,
+    website: String,
+    latitude: String,
+    longitude: String
+});
+
+var ContactSchema = new Schema({
+    firstname: String,
+    lastname:String,
+    university: [UniversitySchema]
+});
+
+var MessagesSchema = new Schema({
+    id: Number,
+    contact: [ContactSchema],
+    date: String,
+    category: String,
+    content: String
+});
+
 var EmployeeSchema = new Schema({
     id: Number,
     guid: String,
@@ -17,7 +43,8 @@ var EmployeeSchema = new Schema({
     username: String,
     password: String,
     salt: String,
-    todo: [ToDoSchema]
+    todo: [ToDoSchema],
+    messages: [MessagesSchema]
 });
 
 module.exports = mongoose.model('Employee', EmployeeSchema);
