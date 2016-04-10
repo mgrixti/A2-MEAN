@@ -1,10 +1,16 @@
 var mongoose = require('mongoose');
 var express = require('express');
-var bodyparser = require('body-parser');
+var bodyParser = require('body-parser');
 var app = express();
 var port = 80;
 var router = express.Router();
 var employee = require('./models/employees.js');
+
+app.use( bodyParser.urlencoded({
+    extended:true
+}));
+
+// app.use(express.urlencoded());
 
 mongoose.connect('mongodb://localhost/assign2');
 
@@ -22,10 +28,16 @@ router.route('/employees')
             res.json(data);
         });
     })
+    //post request for user login.
     .post(function(req,res){
 
-        employee.findOne({username: req.query.username, password: req.query.password}, function (err, data){
-            res.json(data);
+
+        employee.findOne({username: req.body.username, password: req.body.password}, function (err, data){
+            if(data != undefined){
+                res.json(0); // Correct login
+            }
+            else
+                res.json(1); // username/password does not valid
         })
     });
 
