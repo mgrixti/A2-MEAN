@@ -1,16 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title>COMP 4513 - Assignment 2 MEAN Stack</title>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-material/angular-material.js"></script>
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <script src="../node_modules/angular/angular.js"></script>
     <script src="TestLogin.js"></script>
-    <meta charset="UTF-8">
-    <title>Title</title>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+    <script>
+        // Dependency for ngMaterial
+        angular.module('app', ['ngMaterial', 'ngMessages'])
+                .controller('AppCtrl', function($scope) {
+                    $scope.project = {
+                        description: 'Nuclear Missile Defense System',
+                        rate: 500
+                    };
+                });
+    </script>
 </head>
-<body ng-app="app" ng-controller="main">
-    <input type="text" ng-model="userName" placeholder="Enter Username"/> <span ng-show="unProb">{{UsernameProblem}}</span>
-    <br/>
-    <input type="text" ng-model="password" placeholder="Enter Password"/> <span ng-show="pwProb">{{PasswordProblem}}</span>
-    <br/>
-    <button ng-click="login()">Login</button>
+<body ng-app = "app" ng-cloak>
+
+        <!--<input type="text" ng-model="userName" placeholder="Enter Username"/> <span ng-show="unProb">{{UsernameProblem}}</span>-->
+        <!--<br/>-->
+        <!--<input type="text" ng-model="password" placeholder="Enter Password"/> <span ng-show="pwProb">{{PasswordProblem}}</span>-->
+        <!--<br/>-->
+        <!--<button ng-click="login()">Login</button>-->
+
+        <div ng-controller="AppCtrl" layout="column" layout-align="center center" ng-cloak>
+            <md-content layout-padding>
+                <form name="projectForm">
+                    <md-input-container class="md-block">
+                        <label>Username</label>
+                        <input required name="Username" ng-model="project.username">
+                        <div ng-messages="projectForm.Username.$error">
+                            <div ng-message="required">Please enter a username.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input required type="password" name="Password" ng-model="project.password"/>
+                        <div ng-messages="projectForm.Password.$error">
+                            <div ng-message="required">Please enter a password.</div>
+                        </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <md-button class="md-raised md-primary">Primary</md-button>
+                    </md-input-container>
+                </form>
+            </md-content>
+        </div>
+
 </body>
 </html>
