@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 var express = require('express');
+var bodyparser = require('body-parser');
 var app = express();
-
 var port = 80;
 var router = express.Router();
 var employee = require('./models/employees.js');
-
 
 mongoose.connect('mongodb://localhost/assign2');
 
@@ -17,12 +16,19 @@ app.get('/api/', function(req, res){
 
 router.route('/employees')
     .get( function(req, res) {
-        employee.find({}, function (err, data){
-            res.json(data)
+        // employee.find({}, function (err, data){
+        //     res.json(data)
+        employee.findOne({username: req.query.username, password: req.query.password}, function (err, data){
+            res.json(data);
         });
+    })
+    .post(function(req,res){
+
+        employee.findOne({username: req.query.username, password: req.query.password}, function (err, data){
+            res.json(data);
+        })
     });
 
-var ocean;
 // Get 'to-do' by the  employee's ID
 router.route('/todo/:employeeID')
     .get(function(req, res) { // Get all 'todo's for a single employee
@@ -36,12 +42,19 @@ router.route('/todo/:employeeID/:todoID')
     // Right now it filters the to-do programatically, but I would have liked to do it at DB level
     .get(function(req,res) {
         employee.findOne({id: req.params.employeeID}, function(error, data){
-            var todo;
             for(var i = 0; i < data.todo.length; i++){
                 if(data.todo[i].id == req.params.todoID){
                     res.json(data.todo[i]);
                 }
             }
+        });
+    })
+    .put(function(req,res){
+        employee.update({id: req.params.employeeID,'todo.id': req.params.todoID},
+            {'todo.$.description': 'fuck you'}, function (err, data){
+
+            res.json(data);
+
         });
     })
     // Delete specific to-do item for an employee
@@ -53,9 +66,18 @@ router.route('/todo/:employeeID/:todoID')
         });
     });
 
+
+// MESSAGES Routes
+router.route('/messages/:employeeID')
+    .get(function(req, res) { // Get all 'todo's for a single employee
+        employee.findOne({id: req.params.employeeID}, 'messages', function (err, data){
+            res.json(data);
+        });
+    });
+
 router.route('/messages/:employeeID/:messageID')
-    // Get specific to-do item for an employee
-    // Right now it filters the to-do programatically, but I would have liked to do it at DB level
+    // Get specific message item for an employee
+    // Right now it filters the messages programatically, but I would have liked to do it at DB level
     .get(function(req,res) {
         employee.findOne({id: req.params.employeeID}, function(error, data){
             var messages;
@@ -66,14 +88,6 @@ router.route('/messages/:employeeID/:messageID')
             }
         });
     });
-// MESSAGES Routes
-router.route('/messages/:employeeID')
-    .get(function(req, res) { // Get all 'todo's for a single employee
-        employee.findOne({id: req.params.employeeID}, 'messages', function (err, data){
-            res.json(data);
-        });
-    });
-
 
 // all paths on router will have /api/ added to their route
 app.use('/api', router);
