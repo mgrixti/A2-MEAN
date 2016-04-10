@@ -63,7 +63,11 @@ router.route('/todo/:employeeID/:todoID')
     })
     .put(function(req,res){
         employee.update({id: req.params.employeeID,'todo.id': req.params.todoID},
-            {'todo.$.description': 'fuck you'}, function (err, data){
+            {'todo.$.status': req.body.status,
+             'todo.$.priority': req.body.priority,
+             'todo.$.date': req.body.date,
+             'todo.$.description': req.body.description},
+            function (err, data){
 
             res.json(data);
 

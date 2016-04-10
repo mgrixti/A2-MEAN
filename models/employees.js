@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ToDoSchema = new Schema({
     description: String,
-    date: Date,
+    date: String,
     priority: String,
     status: String,
     id: Number
