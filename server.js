@@ -22,10 +22,8 @@ app.get('/api/', function(req, res){
 
 router.route('/employees')
     .get( function(req, res) {
-        // employee.find({}, function (err, data){
-        //     res.json(data)
-        employee.findOne({username: req.query.username, password: req.query.password}, function (err, data){
-            res.json(data);
+        employee.find({}, function (err, data){
+            res.json(data)
         });
     })
     //post request for user login.
