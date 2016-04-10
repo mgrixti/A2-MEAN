@@ -28,7 +28,8 @@
     </script>
 </head>
     <body ng-app = "meanApp" layout="row" ng-cloak>
-        <md-toolbar layout="row" class="md-hue-2">
+    <div layout="column" layout-fill>
+        <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" aria-label="Settings">
                     <i class="material-icons">menu</i>
@@ -45,5 +46,18 @@
                 </md-button>
             </div>
         </md-toolbar>
+
+        <div layout = "row" layout-wrap>
+            <div flex="33"> Messages</div>
+            <div flex="66"> ToDoList</div>
+            <div flex="33"> Books</div>
+        </div>
+
+
+
+    </div>
+
+    <br>
+
     </body>
 </html>
