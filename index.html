@@ -9,6 +9,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
 
+    <link rel="stylesheet" href=""
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,7 +29,7 @@
     </script>
 </head>
     <body ng-app = "meanApp" layout="row" ng-cloak>
-    <div layout="column" layout-fill>
+    <div class = container layout="column" flex>
         <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" aria-label="Settings">
@@ -46,12 +47,13 @@
                 </md-button>
             </div>
         </md-toolbar>
-
-        <div layout = "row" layout-wrap>
-            <div flex="33"> Messages</div>
-            <div flex="66"> ToDoList</div>
-            <div flex="33"> Books</div>
-        </div>
+        <md-content>
+            <div layout = "row" layout-wrap>
+                <div flex="33" style="background-color: green"> Messages</div>
+                <div flex="66"> ToDoList</div>
+                <div flex="33"> Books</div>
+            </div>
+        </md-content>
 
 
 
