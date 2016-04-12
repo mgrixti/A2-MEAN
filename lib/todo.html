@@ -1,0 +1,78 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+	<script src="js/todo.js"></script>
+</head>
+
+<body ng-app="toDo" ng-controller="toDoController">
+
+	<script type="text/ng-template" id="formEdit.tmp1.html">
+		<md-input-container>
+			<label>Date</label>
+			<input ng-model="u.date">
+		</md-input-container>
+		<md-input-container>
+			<label>Description</label>
+			<input ng-model="u.description">
+		</md-input-container>
+		<md-input-container>
+			<label>Status</label>
+			<input ng-model="u.status">
+		</md-input-container>
+		<md-input-container>
+			<label>Priority</label>
+			<input ng-model="u.priority">
+		</md-input-container>
+		<md-button class="md-secondary md-raised" ng-click="saveEntry (u)">Save</md-button>
+	</script>
+		
+	<div id="toDoList">
+		<md-toolbar class="md-theme-light">
+			To Do List
+		</md-toolbar>
+		<md-content>
+			<div>
+				<md-input-container>
+					<label>Date</label>
+					<input ng-model="e.date">
+				</md-input-container>
+				<md-input-container>
+					<label>Description</label>
+					<input ng-model="e.description">
+				</md-input-container>
+				<md-input-container>
+					<label>Status</label>
+					<input ng-model="e.status">
+				</md-input-container>
+				<md-input-container>
+					<label>Priority</label>
+					<input ng-model="e.priority">
+				</md-input-container>
+				<md-button class="md-secondary md-raised" ng-click="addEntry (e)">Add</md-button>
+			</div>
+		</md-content>
+
+		<md-content>
+			<md-list>
+				<md-list-item ng-repeat="entry in todo">
+					<div class="md-list-item-text">
+						<p>{{ entry.date }}</p>
+						<p>{{ entry.description }}</p>
+						<p>{{ entry.status }}</p>
+						<p>{{ entry.priority }}</p>
+					</div>
+					<md-button class="md-secondary md-raised" ng-click="editEntry (entry)">Edit</md-button>
+					<md-button class="md-secondary md-raised" ng-click="removeEntry (entry)">Delete</md-button>
+					<md-divider ng-if"!$last"><md-divider>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</div>
+
+</body>
+</html>
