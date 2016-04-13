@@ -7,6 +7,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 	<script src="js/todo.js"></script>
+	<script src="https://code.jquery.com/jquery-2.2.3.js"></script>
 </head>
 
 <body ng-app="toDo" ng-controller="toDoController">
@@ -14,19 +15,27 @@
 	<script type="text/ng-template" id="formEdit.tmp1.html">
 		<md-input-container>
 			<label>Date</label>
-			<input ng-model="u.date">
+			<input type="date" ng-model="u.date">
 		</md-input-container>
 		<md-input-container>
 			<label>Description</label>
-			<input ng-model="u.description">
+			<input type="text" ng-model="u.description">
 		</md-input-container>
 		<md-input-container>
 			<label>Status</label>
-			<input ng-model="u.status">
+			<md-select ng-model="u.status">
+				<md-option value="completed">Completed</md-option>
+				<md-option value="pending">Pending</md-option>
+				<md-option value="active">Active</md-option>
+			</md-select>
 		</md-input-container>
 		<md-input-container>
 			<label>Priority</label>
-			<input ng-model="u.priority">
+			<md-select ng-model="u.priority">
+				<md-option value="high">High</md-option>
+				<md-option value="medium">Medium</md-option>
+				<md-option value="low">Low</md-option>
+			</md-select>
 		</md-input-container>
 		<md-button class="md-secondary md-raised" ng-click="saveEntry (u)">Save</md-button>
 	</script>
@@ -35,31 +44,37 @@
 		<md-toolbar class="md-theme-light">
 			To Do List
 		</md-toolbar>
-		<md-content>
-			<div>
-				<md-input-container>
-					<label>Date</label>
-					<input ng-model="e.date">
-				</md-input-container>
-				<md-input-container>
-					<label>Description</label>
-					<input ng-model="e.description">
-				</md-input-container>
-				<md-input-container>
-					<label>Status</label>
-					<input ng-model="e.status">
-				</md-input-container>
-				<md-input-container>
-					<label>Priority</label>
-					<input ng-model="e.priority">
-				</md-input-container>
-				<md-button class="md-secondary md-raised" ng-click="addEntry (e)">Add</md-button>
-			</div>
+		<md-content layout="row">
+			<md-input-container layout="column" flex="20">
+				<label>Date</label>
+				<input type="date" ng-model="e.date">
+			</md-input-container>
+			<md-input-container layout="column" flex="40">
+				<label>Description</label>
+				<input type="text" ng-model="e.description">
+			</md-input-container>
+			<md-input-container layout="column" flex="15">
+				<label>Status</label>
+				<md-select ng-model="e.status">
+					<md-option value="completed">Completed</md-option>
+					<md-option value="pending">Pending</md-option>
+					<md-option value="active">Active</md-option>
+				</md-select>
+			</md-input-container>
+			<md-input-container layout="column" flex="15">
+				<label>Priority</label>
+				<md-select ng-model="e.priority">
+					<md-option value="high">High</md-option>
+					<md-option value="medium">Medium</md-option>
+					<md-option value="low">Low</md-option>
+				</md-select>
+			</md-input-container>
+			<md-button class="md-secondary md-raised" ng-click="addEntry (e)">Add</md-button>
 		</md-content>
-
+		<div>
 		<md-content>
 			<md-list>
-				<md-list-item ng-repeat="entry in todo">
+				<md-list-item ng-repeat="entry in todo | orderBy: 'date'">
 					<div class="md-list-item-text">
 						<p>{{ entry.date }}</p>
 						<p>{{ entry.description }}</p>
@@ -72,6 +87,7 @@
 				</md-list-item>
 			</md-list>
 		</md-content>
+		</div>
 	</div>
 
 </body>
