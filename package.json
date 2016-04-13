@@ -8,8 +8,8 @@
   },
   "dependencies": {
     "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
     "express": "^4.13.4",
-    "mongoose": "^4.4.7",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose": "^4.4.12"
   }
 }
