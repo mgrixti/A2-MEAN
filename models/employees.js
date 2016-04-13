@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 var ToDoSchema = new Schema({
     description: String,
     date: String,
     priority: String,
     status: String,
     id: Number
-});
+},  { _id: false });
+
+
 
 var UniversitySchema = new Schema({
     id: Number,
@@ -55,5 +58,6 @@ var EmployeeSchema = new Schema({
     messages: [MessagesSchema],
     books: [BooksSchema]
 });
+
 
 module.exports = mongoose.model('Employee', EmployeeSchema);

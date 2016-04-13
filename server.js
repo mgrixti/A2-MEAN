@@ -10,7 +10,6 @@ app.use( bodyParser.urlencoded({
     extended:true
 }));
 
-// app.use(express.urlencoded());
 
 mongoose.connect('mongodb://localhost/assign2');
 
@@ -29,36 +28,67 @@ router.route('/employees')
     //post request for user login.
     .post(function(req,res){
 
-
         employee.findOne({username: req.body.username, password: req.body.password}, function (err, data){
             if(data != undefined){
                 res.json(0); // Correct login
             }
             else
-                res.json(1); // username/password does not valid
+                res.json(1); // username/password is not valid
         })
     });
 
-// Get 'to-do' by the  employee's ID
+// To-do routes
+// Get to-do' by the  employee's ID
 router.route('/todo/:employeeID')
     .get(function(req, res) { // Get all 'todo's for a single employee
         employee.findOne({id: req.params.employeeID}, 'todo', function (err, data){
             res.json(data);
+        })
+    })
+    .post(function(req,res){
+
+
+        employee.findOne({id: req.params.employeeID}, function(error, data){ //Query to get next ID in tod-o
+            var newid = data.todo[data.todo.length -1].id + 1; //
+
+            var todoItem = {
+                id: newid,
+                status: req.body.status,
+                priority:req.body.priority,
+                date:req.body.date,
+                description: req.body.description
+            };
+
+            employee.update( // Query to insert new to-do object
+                {id: req.params.employeeID},
+                {$addToSet: {todo: todoItem}}, {upsert: true},
+                function (err, model) {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        res.json(model)
+                    }
+                }
+            );
+        });
     });
-});
+
 
 router.route('/todo/:employeeID/:todoID')
     // Get specific to-do item for an employee
     // Right now it filters the to-do programatically, but I would have liked to do it at DB level
     .get(function(req,res) {
-        employee.findOne({id: req.params.employeeID}, function(error, data){
-            for(var i = 0; i < data.todo.length; i++){
-                if(data.todo[i].id == req.params.todoID){
-                    res.json(data.todo[i]);
+            employee.findOne({id: req.params.employeeID}, function(error, data){
+
+                for(var i = 0; i < data.todo.length; i++){
+                    if(data.todo[i].id == req.params.todoID){
+                        res.json(data.todo[i]);
+                    }
                 }
-            }
-        });
+            });
     })
+    // Update to-do item
     .put(function(req,res){
         employee.update({id: req.params.employeeID,'todo.id': req.params.todoID},
             {'todo.$.status': req.body.status,
@@ -67,7 +97,7 @@ router.route('/todo/:employeeID/:todoID')
              'todo.$.description': req.body.description},
             function (err, data){
 
-            res.json(data);
+                res.json(data);
 
         });
     })
@@ -81,9 +111,9 @@ router.route('/todo/:employeeID/:todoID')
     });
 
 
-// MESSAGES Routes
+// Messages Routes
 router.route('/messages/:employeeID')
-    .get(function(req, res) { // Get all 'todo's for a single employee
+    .get(function(req, res) { // Get all messages's for a single employee
         employee.findOne({id: req.params.employeeID}, 'messages', function (err, data){
             res.json(data);
         });
