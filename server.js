@@ -13,6 +13,13 @@ app.use( bodyParser.urlencoded({
 
 mongoose.connect('mongodb://localhost/assign2');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, PUT, DELETE, PUSH");
+    next();
+});
+
 // ----------- API ROUTES -------------
 // Route for API about/how to use page
 app.get('/api/', function(req, res){
