@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
 var ToDoSchema = new Schema({
     description: String,
-    date: Date,
+    date: String,
     priority: String,
     status: String,
     id: Number
-});
+},  { _id: false });
+
+
 
 var UniversitySchema = new Schema({
     id: Number,
@@ -35,6 +38,14 @@ var MessagesSchema = new Schema({
     content: String
 });
 
+var BooksSchema = new Schema({
+    id: Number,
+    isbn10: String,
+    isbn13: Number,
+    title: String,
+    category: String
+});
+
 var EmployeeSchema = new Schema({
     id: Number,
     guid: String,
@@ -44,7 +55,9 @@ var EmployeeSchema = new Schema({
     password: String,
     salt: String,
     todo: [ToDoSchema],
-    messages: [MessagesSchema]
+    messages: [MessagesSchema],
+    books: [BooksSchema]
 });
+
 
 module.exports = mongoose.model('Employee', EmployeeSchema);
