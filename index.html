@@ -9,7 +9,6 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
 
-    <link rel="stylesheet" href=""
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -48,18 +47,99 @@
             </div>
         </md-toolbar>
         <md-content>
-            <div layout = "row" layout-wrap>
-                <div flex="33" style="background-color: green"> Messages</div>
-                <div flex="66"> ToDoList</div>
-                <div flex="33"> Books</div>
+            <div layout = "row" layout-sm="column" layout-wrap>
+                <div flex="33">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">Messages</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">In-card actions</span>
+                                <span class="md-subhead">Description</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="start center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </md-card-actions>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div flex="66">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">To Do List</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">In-card actions</span>
+                                <span class="md-subhead">Description</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="start center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </md-card-actions>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div flex="33">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">Book List</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">In-card actions</span>
+                                <span class="md-subhead">Description</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="start center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </md-card-actions>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                    </md-card>
+                </div>
             </div>
         </md-content>
-
-
-
     </div>
-
-    <br>
-
     </body>
 </html>
