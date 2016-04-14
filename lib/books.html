@@ -1,38 +1,21 @@
-<html>
-<head>
-	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
-	<link rel="stylesheet" href="../bower_components/angular-material-data-table/dist/md-data-table.min.css">
-	<script src="../bower_components/angular/angular.js"></script>
-	<script src="../bower_components/angular-animate/angular-animate.js"></script>
-	<script src="../bower_components/angular-aria/angular-aria.js"></script>
-	<script src="../bower_components/angular-messages/angular-messages.js"></script>
-	<script src="../bower_components/angular-material/angular-material.js"></script>
-	<script src="../bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
-	<script src="../bower_components/jquery/dist/jquery.js"></script>
-	<script src="js/books.js"></script>
-</head>
-
-<body ng-app="books" ng-controller="booksController">
-	<div id="bookList">
-		<md-table-container>
-			<table md-table>
-				<thead md-head md-order="bookOrder">
-					<tr md-row>
-						<th md-column md-order-by="isbn10">ISBN10</th>
-						<th md-column md-order-by="title">Title</th>
-						<th md-column md-order-by="category">Category</th>
-					</tr>
-				</thead>
-				<tbody md-body>
-					<tr md-row ng-repeat="book in books | orderBy: bookOrder">
-						<td md-cell>{{ book.isbn10 }}</td>
-						<td md-cell>{{ book.title }}</td>
-						<td md-cell>{{ book.category }}</td>
-					</tr>
-				</tbody>
-			</table>
-		</md-table-container>
-	</div>
-
-</body>
-</html>
+<script type="text/javascript" src="js/books.js"></script>
+<div ng-controller="booksController">
+	<md-table-container>
+		<table md-table>
+			<thead md-head md-order="bookOrder">
+				<tr md-row>
+					<th md-column md-order-by="isbn10">ISBN10</th>
+					<th md-column md-order-by="title">Title</th>
+					<th md-column md-order-by="category">Category</th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="book in books | orderBy: bookOrder">
+					<td md-cell>{{ book.isbn10 }}</td>
+					<td md-cell>{{ book.title }}</td>
+					<td md-cell>{{ book.category }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</div>
