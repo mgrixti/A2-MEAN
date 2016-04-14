@@ -13,7 +13,7 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <script type="text/javascript" src="../node_modules/angular-msgbox/angular-msgbox.js"></script>
 
     <script src="TestLogin.js"></script>
 
@@ -34,14 +34,14 @@
                 <form name="projectForm">
                     <md-input-container class="md-block">
                         <label>Username</label>
-                        <input required name="Username" ng-model="project.username">
+                        <input required name="Username" ng-model="username">
                         <div ng-messages="projectForm.Username.$error">
                             <div ng-message="required">Please enter a username.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Password</label>
-                        <input required type="password" name="Password" ng-model="project.password"/>
+                        <input required type="password" name="Password" ng-model="password"/>
                         <div ng-messages="projectForm.Password.$error">
                             <div ng-message="required">Please enter a password.</div>
                         </div>
