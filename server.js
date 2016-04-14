@@ -1,10 +1,14 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
+var http = require('http');
+var fs = require("fs");
 var app = express();
 var port = 80;
 var router = express.Router();
 var employee = require('./models/employees.js');
+
+
 
 app.use( bodyParser.urlencoded({
     extended:true
@@ -147,7 +151,7 @@ app.use('/api', router);
 // --------- APPLICATION ROUTES ---------
 // Route for SPA
 app.get('/', function(req, res){
-    res.send('<h1>Angular app goes here</h1>');
+    res.sendFile(__dirname + '/index.html');
 });
 
 console.log('API running on port: ' + port);
