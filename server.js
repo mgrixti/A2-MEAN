@@ -48,6 +48,13 @@ router.route('/employees')
         })
     });
 
+router.route('/employees/:employeeID')
+    .get( function(req, res) {
+        employee.find({id: req.params.employeeID}, function (err, data){
+            res.json(data)
+        });
+    });
+
 // To-do routes
 // Get to-do' by the  employee's ID
 router.route('/todo/:employeeID')
