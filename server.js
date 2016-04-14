@@ -7,7 +7,7 @@ var app = express();
 var port = 80;
 var router = express.Router();
 var employee = require('./models/employees.js');
-
+var session = require('client-sessions');
 
 
 app.use( bodyParser.urlencoded({
@@ -16,6 +16,13 @@ app.use( bodyParser.urlencoded({
 
 
 mongoose.connect('mongodb://localhost/assign2');
+
+app.use(session({
+    cookieName: 'session',
+    secret: 'sdaeacwcsdcwesdc',
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+}));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
