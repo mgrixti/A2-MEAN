@@ -37,13 +37,14 @@ app.use(function(req, res, next) {
 function requireLogin (req, res, next) {
    // console.log("requireLogin");
     if (!req.session.user) {
-       // console.log('SESSIONS:' ,req.session);
-        res.redirect('/login');
+        // console.log('SESSIONS:' ,req.session);
+        res.redirect('/');
 
     } else {
         next();
     }
 }
+ 
 
 mongoose.connect('mongodb://localhost/assign2');
 
@@ -187,14 +188,8 @@ app.use('/api', router);
 
 
 // --------- APPLICATION ROUTES ---------
-// Route for SPA
-app.get('/', requireLogin, function(req, res){
+app.get('/', function(req, res){
     res.sendFile(__dirname + '/index.html');
-
-});
-
-app.get('/login', function(req, res){
-    res.sendFile(__dirname + '\\lib\\login.html');
 })
     .post('/login', function(req, res) {
         employee.findOne({ username: req.body.username }, {id: 1, username: 1, password: 1}, function(err, user) {
@@ -213,9 +208,17 @@ app.get('/login', function(req, res){
         });
 });
 
+app.get('/loggedin', function (req, res) {
+    if (req.session.user) {
+        res.json ('yes');
+    } else {
+        res.json ('no');
+    }
+});
+
 app.get('/logout', function(req, res) {
     req.session.reset();
-    res.redirect('/login');
+    res.redirect('/');
 });
 
 
