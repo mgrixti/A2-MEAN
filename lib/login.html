@@ -28,29 +28,34 @@
     </style>
 </head>
 <body ng-app ="app" ng-cloak>
-
-
         <div ng-controller="AppCtrl" layout="column" layout-align="center center" ng-cloak>
-            <md-content layout-padding>
-                <form action='/login' method='post' name="projectForm">
-                    <md-input-container class="md-block">
-                        <label>Username</label>
-                        <input required name="Username" ng-model="username">
-                        <div ng-messages="projectForm.Username.$error">
-                            <div ng-message="required">Please enter a username.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label>Password</label>
-                        <input required type="password" name="Password" ng-model="password"/>
-                        <div ng-messages="projectForm.Password.$error">
-                            <div ng-message="required">Please enter a password.</div>
-                        </div>
-
-                    </md-input-container>
-                    <md-button class="md-raised md-primary" ng-click="login($event)">Log in</md-button>
-                </form>
-            </md-content>
+            <md-card class = "md-whiteframe-20dp">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Login to Dashboard</span>
+                        <span class="md-subhead">Enter your username and password</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-actions>
+                    <form action='/login' method='post' name="projectForm">
+                        <md-input-container class="md-block">
+                            <label>Username</label>
+                            <input required name="Username" ng-model="username">
+                            <div ng-messages="projectForm.Username.$error">
+                                <div ng-message="required">Please enter a username.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block">
+                            <label>Password</label>
+                            <input required type="password" name="Password" ng-model="password"/>
+                            <div ng-messages="projectForm.Password.$error">
+                                <div ng-message="required">Please enter a password.</div>
+                            </div>
+                        </md-input-container>
+                        <md-button class="md-raised md-primary" ng-click="login($event)">Log in</md-button>
+                    </form>
+                </md-card-actions>
+            </md-card>
         </div>
 </body>
 </html>
