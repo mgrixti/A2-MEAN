@@ -1,3 +1,5 @@
+// Used session tutorial: https://stormpath.com/blog/everything-you-ever-wanted-to-know-about-node-dot-js-sessions/
+
 var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -9,16 +11,16 @@ var employee = require('./models/employees.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+// Static routes
 app.use(express.static(__dirname + '/lib'));
 app.use(express.static(__dirname + '/lib/js'));
 app.use(express.static(__dirname + '/bower_components'));
 
 app.use(function(req, res, next) {
-    console.log('COOKIE BITCH: ',  req.headers.cookie);
     if (req.session && req.session.user) {
         employee.findOne({ username: req.session.user.username }, function(err, user) {
             if (user) {
-                console.log('ITS ME!');
                 req.user = user;
                 delete req.user.password; // delete the password from the session
                 req.session.user = user;  //refresh the session value
@@ -33,16 +35,15 @@ app.use(function(req, res, next) {
 });
 
 function requireLogin (req, res, next) {
-    console.log("requireLogin");
+   // console.log("requireLogin");
     if (!req.session.user) {
-        console.log('SESSIONS:' ,req.session);
+       // console.log('SESSIONS:' ,req.session);
         res.redirect('/login');
 
     } else {
         next();
     }
 }
-
 
 mongoose.connect('mongodb://localhost/assign2');
 
@@ -75,21 +76,10 @@ router.route('/employees')
         employee.find({}, function (err, data){
             res.json(data)
         });
-    })
-    //post request for user login.
-    .post(function(req,res){
-
-        employee.findOne({username: req.body.username, password: req.body.password}, function (err, data){
-            if(data != undefined){
-                res.json(0); // Correct login
-            }
-            else
-                res.json(1); // username/password is not valid
-        })
     });
 
 router.route('/employees/:employeeID')
-    .get( function(req, res) {
+    .get(function(req, res) {
         employee.find({id: req.params.employeeID}, function (err, data){
             res.json(data)
         });
@@ -99,9 +89,10 @@ router.route('/employees/:employeeID')
 // Get to-do' by the  employee's ID
 router.route('/todo/:employeeID')
     .get(function(req, res) { // Get all 'todo's for a single employee
-        employee.findOne({id: req.params.employeeID}, 'todo', function (err, data){
+
+        employee.findOne({id: req.params.employeeID}, 'todo', function (err, data) {
             res.json(data);
-        })
+        });
     })
     .post(function(req,res){
 
@@ -208,16 +199,15 @@ app.get('/login', function(req, res){
     .post('/login', function(req, res) {
         employee.findOne({ username: req.body.username }, {id: 1, username: 1, password: 1}, function(err, user) {
             if (!user) {
-                res.json(1);
+                res.json('error');
             } else {
                 if (req.body.password === user.password) {
                     // sets a cookie with the user's info
-                    console.log('BITCH SET THE SESSION FINALLY');
                     req.session.user = user;
-                    console.log(req.session.user);
-                    res.redirect('/');
+                    delete req.session.user.password;
+                    res.json(req.session.user);
                 } else {
-                    res.json(1);
+                    res.json('error');
                 }
             }
         });
