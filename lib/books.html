@@ -4,16 +4,16 @@
 			<thead md-head md-order="bookOrder">
 				<tr md-row>
 					<th md-column></th>
-					<th md-column md-order-by="isbn10">ISBN10</th>
 					<th md-column md-order-by="title">Title</th>
+					<th md-column md-order-by="isbn10">ISBN10</th>
 					<th md-column md-order-by="category">Category</th>
 				</tr>
 			</thead>
 			<tbody md-body>
 				<tr md-row ng-repeat="book in books | orderBy: bookOrder">
 					<td md-cell><img height="100" width="75" src= {{book.image}}></td>
-					<td md-cell>{{ book.isbn10 }}</td>
 					<td md-cell>{{ book.title }}</td>
+					<td md-cell>{{ book.isbn10 }}</td>
 					<td md-cell>{{ book.category }}</td>
 				</tr>
 			</tbody>
