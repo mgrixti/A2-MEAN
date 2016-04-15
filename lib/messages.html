@@ -38,7 +38,7 @@
 			<tbody md-body>
 				<tr md-row ng-repeat="message in messages | orderBy: orderByDate">
 					<td md-cell>{{ message.contact[0].firstname + ' ' + message.contact[0].lastname }}</td>
-					<td md-cell><a href="#{{ message.contact[0].university[0].name }}" ng-click="viewMessage (message)">{{ message.contact[0].university[0].name }}</a></td>
+					<td md-cell><a href="/#/main" ng-click="viewMessage (message)">{{ message.contact[0].university[0].name }}</a></td>
 					<td md-cell>{{ message.date }}</td>
 					<td md-cell>{{ message.category }}</td>
 					<td md-cell>{{ message.content }}</td>
