@@ -28,16 +28,16 @@
 	</script>
 		
 	<div id="toDoList">
-		<md-content layout="row" flex>
-			<md-input-container flex="20">
+		<md-content layout="row">
+			<md-input-container>
 				<label>Date</label>
 				<input type="date" ng-model="e.date">
 			</md-input-container>
-			<md-input-container flex="40">
+			<md-input-container>
 				<label>Description</label>
 				<input type="text" ng-model="e.description">
 			</md-input-container>
-			<md-input-container flex="15">
+			<md-input-container>
 				<label>Status</label>
 				<md-select ng-model="e.status">
 					<md-option value="completed">Completed</md-option>
@@ -45,7 +45,7 @@
 					<md-option value="active">Active</md-option>
 				</md-select>
 			</md-input-container>
-			<md-input-container flex="15">
+			<md-input-container>
 				<label>Priority</label>
 				<md-select ng-model="e.priority">
 					<md-option value="high">High</md-option>
@@ -94,8 +94,7 @@
 						<td md-cell>{{ entry.description }}</td>
 						<td md-cell>{{ entry.priority }}</td>
 						<td md-cell>{{ entry.status }}</td>
-						<td md-cell><md-button ng-click="editEntry (entry)">Edit</md-button></td>
-						<td md-cell><md-button ng-click="removeEntry (entry)">Delete</md-button></td>
+						<td md-cell><md-button ng-click="editEntry (entry)">Edit</md-button><md-button ng-click="removeEntry (entry)">Delete</md-button></td>
 					</tr>
 				</tbody>
 			</table>

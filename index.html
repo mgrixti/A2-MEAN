@@ -21,7 +21,7 @@
 </head>
 
 <body ng-app="myapp" ng-cloak>
-    <div layout="column">
+    <div layout="column" ng-view>
         <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" aria-label="Settings">
@@ -31,11 +31,9 @@
                     <span>MEAN Stack Manager - Welcome, username!</span>
                 </h2>
                 <span flex></span>
-                <md-button class="md-icon-button" aria-label="Favorite">
-                    <i class="material-icons">favorite</i>
-                </md-button>
-                <md-button class="md-icon-button" aria-label="More">
-                    <i class="material-icons">more_vert</i>
+                <a href="/logout">Logout</a>
+                <md-button class="md-icon-button" aria-label="Logout" href="/logout">
+                    <md-icon md-svg-icon="logout"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
