@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>COMP 4513 - Assignment 2 MEAN Stack</title>
+
+	<link rel="stylesheet" href="angular-material/angular-material.css">
+	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+	<script src="angular/angular.js"></script>
+	<script src="angular-animate/angular-animate.js"></script>
+	<script src="angular-aria/angular-aria.js"></script>
+	<script src="angular-messages/angular-messages.js"></script>
+	<script src="angular-material/angular-material.js"></script>
+	<script src="angular-material-data-table/dist/md-data-table.min.js"></script>
+	<script src="jquery/dist/jquery.js"></script>
+	<script tyoe="text/javascript" src="js/index.js"></script>
+
+</head>
+
+<body ng-app="myapp" layout="row" ng-cloak>
+    <div class = container layout="column" flex>
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" aria-label="Settings">
+                    <i class="material-icons">menu</i>
+                </md-button>
+                <h2>
+                    <span>MEAN Stack Manager - Welcome, username!</span>
+                </h2>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="Favorite">
+                    <i class="material-icons">favorite</i>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="More">
+                    <i class="material-icons">more_vert</i>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <div layout = "row" layout-sm="column" layout-wrap>
+                <div flex="33">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">Messages</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">In-card actions</span>
+                                <span class="md-subhead">Description</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-actions layout="row" layout-align="start center">
+                            <md-button>Action 1</md-button>
+                            <md-button>Action 2</md-button>
+                        </md-card-actions>
+                        <md-card-content>
+                            <p>
+                                The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+                                two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+                            </p>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div flex="66">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">To Do List</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <md-card-content>
+                            <script type="text/javascript" src="js/todo.js"></script>
+							<div ng-include="'todo.html'"></div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div flex="33">
+                    <md-card class= "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-button class="md-icon-button" aria-label="booklist-menu">
+                                <i class="material-icons">menu</i>
+                            </md-button>
+                            <md-card-header-text>
+                                <span class="md-title">Book List</span>
+                                <span class="md-subhead">subhead</span>
+                            </md-card-header-text>
+                        </md-card-header>
+                        <md-card-content>
+                            <script type="text/javascript" src="js/books.js"></script>
+							<div ng-include="'books.html'"></div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </div>
+        </md-content>
+    </div>
+
+	
+
+	
+
+</body>
+</html>

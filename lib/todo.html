@@ -1,17 +1,4 @@
-<html>
-<head>
-	<link rel="stylesheet" href="../bower_components/angular-material/angular-material.css">
-	<script src="../bower_components/angular/angular.js"></script>
-	<script src="../bower_components/angular-animate/angular-animate.js"></script>
-	<script src="../bower_components/angular-aria/angular-aria.js"></script>
-	<script src="../bower_components/angular-messages/angular-messages.js"></script>
-	<script src="../bower_components/angular-material/angular-material.js"></script>
-	<script src="../bower_components/jquery/dist/jquery.js"></script>
-	<script src="js/todo.js"></script>
-</head>
-
-<body ng-app="toDo" ng-controller="toDoController">
-
+<div ng-controller="toDoController">
 	<script type="text/ng-template" id="formEdit.tmp1.html">
 		<md-input-container>
 			<label>Date</label>
@@ -66,7 +53,9 @@
 					<md-option value="low">Low</md-option>
 				</md-select>
 			</md-input-container>
-			<md-button class="md-secondary md-raised" ng-click="addEntry (e)">Add</md-button>
+			<md-input-container>
+				<md-button class="md-raised" ng-click="addEntry (e)">Add</md-button>
+			</md-input-container>
 		</md-content>
 		
 		<md-content>
@@ -87,20 +76,29 @@
 					<md-option value="low">Low</md-option>
 				</md-select>
 			</md-input-container>
-
-			<md-list>
-				<md-list-item ng-repeat="entry in todo | orderBy: orderByDate | filter: {status: selectedStatus, priority: selectedPriority}">
-					<div class="md-list-item-text">
-						<p>{{ entry.date }}</p>
-						<p>{{ entry.description }}</p>
-					</div>
-					<md-button class="md-secondary md-raised" ng-click="editEntry (entry)">Edit</md-button>
-					<md-button class="md-secondary md-raised" ng-click="removeEntry (entry)">Delete</md-button>
-					<md-divider ng-if"!$last"><md-divider>
-				</md-list-item>
-			</md-list>
 		</md-content>
-	</div>
 
-</body>
-</html>
+		<md-table-container>
+			<table md-table>
+				<thead md-head>
+					<th md-column>Date</th>
+					<th md-column>Description</th>
+					<th md-column>Priority</th>
+					<th md-column>Status</th>
+					<th md-column></th>
+					<th md-column></th>
+				</thead>
+				<tbody md-body>
+					<tr md-row ng-repeat="entry in todo | orderBy: orderByDate | filter: {status: selectedStatus, priority: selectedPriority}">
+						<td md-cell>{{ entry.date }}</td>
+						<td md-cell>{{ entry.description }}</td>
+						<td md-cell>{{ entry.priority }}</td>
+						<td md-cell>{{ entry.status }}</td>
+						<td md-cell><md-button ng-click="editEntry (entry)">Edit</md-button></td>
+						<td md-cell><md-button ng-click="removeEntry (entry)">Delete</md-button></td>
+					</tr>
+				</tbody>
+			</table>
+		</md-table-container>
+	</div>
+</div>

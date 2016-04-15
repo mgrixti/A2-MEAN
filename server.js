@@ -197,7 +197,7 @@ app.use('/api', router);
 // --------- APPLICATION ROUTES ---------
 // Route for SPA
 app.get('/', requireLogin, function(req, res){
-    res.sendFile(__dirname + '/que.html');
+    res.sendFile(__dirname + '\\lib\\index.html');
 
 });
 
