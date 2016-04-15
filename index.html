@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="angular-material-data-table/dist/md-data-table.min.css">
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/style.css">
 
 	<script src="angular/angular.js"></script>
 	<script src="angular-animate/angular-animate.js"></script>
@@ -16,19 +17,39 @@
 	<script src="angular-material/angular-material.js"></script>
 	<script src="angular-material-data-table/dist/md-data-table.min.js"></script>
 	<script src="jquery/dist/jquery.js"></script>
-	<script tyoe="text/javascript" src="js/index.js"></script>
-
+	<script type="text/javascript" src="js/index.js"></script>
 </head>
 
 <body ng-app="myapp" ng-cloak>
-    <div layout="column" ng-view>
+<script type = "text/javascript" src="js/fabspeeddial.js"></script>
+    <md-content class = "mg-padding" layout = "row" ng-controller="DemoCtrl as demo">
+        <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" md-open="demo.isOpen"
+                           class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': demo.hover }"
+                           ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"
+                           id = "fabSpeedDialMenu">
+            <md-fab-trigger>
+                <md-button aria-label="menu" class="md-fab md-warn">
+                    <md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
+                    <md-icon md-svg-icon="menu" aria-label="Menu"></md-icon>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions>
+                <div ng-repeat="item in demo.items">
+                    <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
+                               ng-click="demo.openDialog($event, item)">
+                        <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
+                                    md-autohide="false">
+                            {{item.name}}
+                        </md-tooltip>
+                        <md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
+                    </md-button>
+                </div>
+            </md-fab-actions>
+        </md-fab-speed-dial>
         <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
-                <md-button class="md-icon-button" aria-label="Settings">
-                    <i class="material-icons">menu</i>
-                </md-button>
                 <h2>
-                    <span>MEAN Stack Manager - Welcome, username!</span>
+                    <span id = "toolbarTitle">MEAN Stack Manager - Welcome, username!</span>
                 </h2>
                 <span flex></span>
                 <a href="/logout">Logout</a>
@@ -37,55 +58,50 @@
                 </md-button>
             </div>
         </md-toolbar>
-        <md-content>
-            <div layout = "row" layout-sm="column" layout-wrap>
-                <div flex="50">
-                    <md-card class= "md-whiteframe-20dp">
-                        <md-card-header>
-                            <md-card-header-text>
-                                <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
-                                <span class="md-subhead">Add and view items</span>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <md-card-content>
-                            <script type="text/javascript" src="todo.js"></script>
-                            <div ng-include="'todo.html'"></div>
-                        </md-card-content>
-                    </md-card>
-                </div>
-                <div flex="50">
-                    <md-card class = "md-whiteframe-20dp">
-                        <md-card-header>
-                            <md-card-header-text>
-                                <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
-                                <span class="md-subhead"></span>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <md-card-content>
-                            <script type="text/javascript" src="js/messages.js"></script>
-							<div ng-include="'messages.html'"></div>
-                        </md-card-content>
-                    </md-card>
-                    <md-card class= "md-whiteframe-20dp">
-                        <md-card-header>
-                            <md-card-header-text>
-                                <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
-                                <span class="md-subhead">Click headings to sort</span>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <md-card-content>
-                            <script type="text/javascript" src="js/books.js"></script>
-							<div ng-include="'books.html'"></div>
-                        </md-card-content>
-                    </md-card>
-                </div>
+    </md-content>
+    <md-content>
+        <div layout = "row" layout-sm="column" layout-wrap>
+            <div flex="50">
+                <md-card class= "md-whiteframe-20dp">
+                    <md-card-header>
+                        <md-card-header-text>
+                            <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
+                            <span class="md-subhead">Add and view items</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <script type="text/javascript" src="todo.js"></script>
+                        <div ng-include="'todo.html'"></div>
+                    </md-card-content>
+                </md-card>
             </div>
-        </md-content>
-    </div>
-
-	
-
-	
-
+            <div flex="50">
+                <md-card class = "md-whiteframe-20dp">
+                    <md-card-header>
+                        <md-card-header-text>
+                            <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
+                            <span class="md-subhead"></span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <script type="text/javascript" src="js/messages.js"></script>
+                        <div ng-include="'messages.html'"></div>
+                    </md-card-content>
+                </md-card>
+                <md-card class= "md-whiteframe-20dp">
+                    <md-card-header>
+                        <md-card-header-text>
+                            <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
+                            <span class="md-subhead">Click headings to sort</span>
+                        </md-card-header-text>
+                    </md-card-header>
+                    <md-card-content>
+                        <script type="text/javascript" src="js/books.js"></script>
+                        <div ng-include="'books.html'"></div>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
+    </md-content>
 </body>
 </html>
