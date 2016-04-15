@@ -10,6 +10,7 @@ var employee = require('./models/employees.js');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/lib'));
+app.use(express.static(__dirname + '/lib/js'));
 app.use(express.static(__dirname + '/bower_components'));
 
 app.use(function(req, res, next) {
@@ -197,7 +198,7 @@ app.use('/api', router);
 // --------- APPLICATION ROUTES ---------
 // Route for SPA
 app.get('/', requireLogin, function(req, res){
-    res.sendFile(__dirname + '\\lib\\index.html');
+    res.sendFile(__dirname + '/index.html');
 
 });
 
