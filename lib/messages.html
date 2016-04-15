@@ -1,0 +1,43 @@
+<div ng-controller="messagesController">
+
+	<script type="text/ng-template" id="message.tmp1.html">
+		<md-content>
+			<p><h2>University Details</h2></p>
+			<p><b>Name:</b> {{ details.name }}<br>
+			<b>Address:</b> {{ details.address }}<br>
+			<b>City:</b> {{ details.city }}<br>
+			<b>State:</b> {{ details.state }}<br>
+			<b>Zip:</b> {{ details.zip }}<br>
+			<b>Website:</b> {{ details.website }}<br>
+			<b>Latitude:</b> {{ details.latitude }}<br>
+			<b>Longitude:</b> {{ details.longitude }}</p>
+			<iframe width="800" height="450" frameborder="0" style="border:0" ng-src="{{ mapsUrl }}"></iframe>
+		</md-content>
+	</script>
+
+	<md-table-container>
+		<table md-table>
+			<thead md-head>
+				<tr md-row>
+					<th md-column>Contact Name</th>
+					<th md-column>University</th>
+					<th md-column>Date</th>
+					<th md-column>Category</th>
+					<th md-column>Message</th>
+				</tr>
+			</thead>
+			<tbody md-body>
+				<tr md-row ng-repeat="message in messages | orderBy: orderByDate">
+					<td md-cell>{{ message.contact[0].firstname + ' ' + message.contact[0].lastname }}</td>
+					<td md-cell><a href="#{{ message.contact[0].university[0].name }}" ng-click="viewMessage (message)">{{ message.contact[0].university[0].name }}</a></td>
+					<td md-cell>{{ message.date }}</td>
+					<td md-cell>{{ message.category }}</td>
+					<td md-cell>{{ message.content }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</md-table-container>
+</div>
+
+</body>
+</html>
