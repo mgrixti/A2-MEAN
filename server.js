@@ -223,6 +223,10 @@ app.get('/login', function(req, res){
         });
 });
 
+app.get('/logout', function(req, res) {
+    req.session.reset();
+    res.redirect('/login');
+});
 
 
 app.listen(port, function(){ console.log('API running on port: ' + port);});
