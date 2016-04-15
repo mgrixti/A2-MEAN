@@ -206,7 +206,7 @@ app.get('/login', function(req, res){
     res.sendFile(__dirname + '\\lib\\login.html');
 })
     .post('/login', function(req, res) {
-        employee.findOne({ username: req.body.username }, {username: 1, password: 1}, function(err, user) {
+        employee.findOne({ username: req.body.username }, {id: 1, username: 1, password: 1}, function(err, user) {
             if (!user) {
                 res.json(1);
             } else {
