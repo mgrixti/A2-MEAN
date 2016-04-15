@@ -1,4 +1,4 @@
-<div ng-controller="messagesController">
+<div ng-controller="messagesController" flex>
 
 	<script type="text/ng-template" id="message.tmp1.html">
 		
@@ -6,20 +6,20 @@
 			<p>University Details</p>
 		</md-toolbar>
 		<md-content layout="row" layout-align="center start">
-			<div layout-padding>
+			<div layout-padding flex>
 				<p><b>Name:</b> {{ details.name }}<br>
 				<b>Address:</b> {{ details.address }}<br>
 				<b>City:</b> {{ details.city }}<br>
 				<b>State:</b> {{ details.state }}</p>
 			</div>
-			<div layout-padding>
+			<div layout-padding flex>
 				<p><b>Zip:</b> {{ details.zip }}<br>
 				<b>Website:</b> {{ details.website }}<br>
 				<b>Latitude:</b> {{ details.latitude }}<br>
 				<b>Longitude:</b> {{ details.longitude }}</p>
 			</div>
 		</md-content>
-		<md-content layout="row">
+		<md-content layout="row" flex>
 			<img src="{{ mapsUrl }}">
 		</md-content>
 	</script>
