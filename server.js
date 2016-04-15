@@ -2,30 +2,22 @@ var mongoose = require('mongoose');
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('client-sessions');
-var http = require('http');
-var fs = require("fs");
 var app = express();
-var port = 23423;
+var port = 80;
 var router = express.Router();
 var employee = require('./models/employees.js');
-var session = require('client-sessions');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/lib'));
 app.use(express.static(__dirname + '/bower_components'));
 
-app.use(session({
-    cookieName: 'session',
-    secret: 'random_string_goes_here',
-    duration: 30 * 60 * 1000,
-    activeDuration: 5 * 60 * 1000
-}));
-
 app.use(function(req, res, next) {
+    console.log('COOKIE BITCH: ',  req.headers.cookie);
     if (req.session && req.session.user) {
-        User.findOne({ username: req.session.user.username }, function(err, user) {
+        employee.findOne({ username: req.session.user.username }, function(err, user) {
             if (user) {
+                console.log('ITS ME!');
                 req.user = user;
                 delete req.user.password; // delete the password from the session
                 req.session.user = user;  //refresh the session value
@@ -40,10 +32,11 @@ app.use(function(req, res, next) {
 });
 
 function requireLogin (req, res, next) {
-    if (!req.user) {
-
+    console.log("requireLogin");
+    if (!req.session.user) {
+        console.log('SESSIONS:' ,req.session);
         res.redirect('/login');
-        console.log('fuck you');
+
     } else {
         next();
     }
@@ -57,6 +50,10 @@ app.use(session({
     secret: 'sdaeacwcsdcwesdc',
     duration: 30 * 60 * 1000,
     activeDuration: 5 * 60 * 1000,
+    httpOnly: false,
+    cookie: {
+        httpOnly: false
+    }
 }));
 
 app.use(function(req, res, next) {
@@ -206,7 +203,25 @@ app.get('/', requireLogin, function(req, res){
 
 app.get('/login', function(req, res){
     res.sendFile(__dirname + '\\lib\\login.html');
+})
+    .post('/login', function(req, res) {
+        employee.findOne({ username: req.body.username }, {username: 1, password: 1}, function(err, user) {
+            if (!user) {
+                res.json(1);
+            } else {
+                if (req.body.password === user.password) {
+                    // sets a cookie with the user's info
+                    console.log('BITCH SET THE SESSION FINALLY');
+                    req.session.user = user;
+                    console.log(req.session.user);
+                    res.redirect('/');
+                } else {
+                    res.json(1);
+                }
+            }
+        });
 });
+
 
 
 app.listen(port, function(){ console.log('API running on port: ' + port);});
