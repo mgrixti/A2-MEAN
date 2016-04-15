@@ -20,8 +20,8 @@
 
 </head>
 
-<body ng-app="myapp" layout="row" ng-cloak>
-    <div class = container layout="column" flex>
+<body ng-app="myapp" ng-cloak>
+    <div layout="column">
         <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
                 <md-button class="md-icon-button" aria-label="Settings">
@@ -41,18 +41,28 @@
         </md-toolbar>
         <md-content>
             <div layout = "row" layout-sm="column" layout-wrap>
-                <div flex="33">
+                <div flex="50">
                     <md-card class= "md-whiteframe-20dp">
                         <md-card-header>
-                            <md-button class="md-icon-button" aria-label="booklist-menu">
-                                <i class="material-icons">menu</i>
-                            </md-button>
                             <md-card-header-text>
-                                <span class="md-title">Messages</span>
-                                <span class="md-subhead">subhead</span>
+                                <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
+                                <span class="md-subhead">Add and view items</span>
                             </md-card-header-text>
                         </md-card-header>
-                        <!--<img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">-->
+                        <md-card-content>
+                            <script type="text/javascript" src="js/todo.js"></script>
+                            <div ng-include="'todo.html'"></div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div flex="50">
+                    <md-card class = "md-whiteframe-20dp">
+                        <md-card-header>
+                            <md-card-header-text>
+                                <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
+                                <span class="md-subhead"></span>
+                            </md-card-header-text>
+                        </md-card-header>
                         <md-card-title>
                             <md-card-title-text>
                                 <span class="md-headline">In-card actions</span>
@@ -70,33 +80,11 @@
                             </p>
                         </md-card-content>
                     </md-card>
-                </div>
-                <div flex="66">
                     <md-card class= "md-whiteframe-20dp">
                         <md-card-header>
-                            <md-button class="md-icon-button" aria-label="booklist-menu">
-                                <i class="material-icons">menu</i>
-                            </md-button>
                             <md-card-header-text>
-                                <span class="md-title">To Do List</span>
-                                <span class="md-subhead">subhead</span>
-                            </md-card-header-text>
-                        </md-card-header>
-                        <md-card-content>
-                            <script type="text/javascript" src="js/todo.js"></script>
-							<div ng-include="'todo.html'"></div>
-                        </md-card-content>
-                    </md-card>
-                </div>
-                <div flex="33">
-                    <md-card class= "md-whiteframe-20dp">
-                        <md-card-header>
-                            <md-button class="md-icon-button" aria-label="booklist-menu">
-                                <i class="material-icons">menu</i>
-                            </md-button>
-                            <md-card-header-text>
-                                <span class="md-title">Book List</span>
-                                <span class="md-subhead">subhead</span>
+                                <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
+                                <span class="md-subhead">Click headings to sort</span>
                             </md-card-header-text>
                         </md-card-header>
                         <md-card-content>
