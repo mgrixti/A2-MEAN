@@ -1,4 +1,4 @@
-<div ng-controller="mainController" ng-show="showContent">    
+<div ng-controller="mainController" ng-show="showContent">
     <md-content class = "mg-padding" layout = "row" ng-controller="DemoCtrl as demo">
         <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" md-open="demo.isOpen"
                            class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': demo.hover }"
@@ -37,8 +37,8 @@
         </md-toolbar>
     </md-content>
     <md-content>
-        <div layout = "row" layout-sm="column" layout-wrap>
-            <div flex="50">
+        <div layout = "row" layout-sm="column" layout-xs="column" layout-wrap>
+            <div flex>
                 <md-card class= "md-whiteframe-20dp">
                     <md-card-header>
                         <md-card-header-text>
@@ -52,7 +52,7 @@
                     </md-card-content>
                 </md-card>
             </div>
-            <div flex="50">
+            <div flex>
                 <md-card class = "md-whiteframe-20dp">
                     <md-card-header>
                         <md-card-header-text>
