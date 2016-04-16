@@ -27,7 +27,7 @@
                 <md-toolbar class="md-hue-2">
                     <div class="md-toolbar-tools">
                         <h2>
-                            <span id = "toolbarTitle">Employee Dashboard - Welcome, username!</span>
+                            <span id = "toolbarTitle">Employee Dashboard - Welcome, {{ username }}!</span>
                         </h2>
                         <span flex></span>
                         <a href="/logout">Logout</a>
@@ -43,7 +43,7 @@
             <div flex>
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header ng-click="toggleContent ('todo')">
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('todo')">
                             <md-card-header-text>
                                 <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
                                 <span class="md-subhead">Add and view items</span>
@@ -59,7 +59,7 @@
 
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header ng-click="toggleContent ('books')">
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('books')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
                                 <span class="md-subhead">Click headings to sort</span>
@@ -75,7 +75,7 @@
             <div flex>
                 <md-card class = "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header ng-click="toggleContent ('messages')">
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('messages')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
                                 <span class="md-subhead"></span>

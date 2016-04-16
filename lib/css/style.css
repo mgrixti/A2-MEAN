@@ -6,3 +6,7 @@
 #toolbarTitle{
     padding-left: 55px;
 }
+
+.mouseToggle{
+	cursor: pointer;
+}
