@@ -2,7 +2,7 @@
     <div ng-controller="mainController" ng-show="showContent">
         <div layout="column" ng-controller="DemoCtrl as demo" ng-cloak>
             <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" md-open="demo.isOpen"
-                               class="md-scale md-fab-top-left onTop" ng-class="{ 'md-hover-full': demo.hover }"
+                               class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': demo.hover }"
                                ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"
                                id = "fabSpeedDialMenu">
                 <md-fab-trigger>
