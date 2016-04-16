@@ -23,7 +23,7 @@
 
 </head>
 
-<body ng-app="myapp" ng-cloak>
+<body ng-app="myapp" ng-cloak ng-controller="toolbarController">
     
     <script type="text/javascript" src="js/login.js"></script>    
     <script type="text/javascript" src="js/fabspeeddial.js"></script>
@@ -32,6 +32,48 @@
     <script type="text/javascript" src="js/messages.js"></script>
     <script type="text/javascript" src="js/books.js"></script>  
 
+
+    <div layout="column" ng-controller="menuCtrl as menu" ng-cloak>
+        <div ng-hide="fabHide">
+            <md-fab-speed-dial ng-hide="menu.hidden" md-direction="down" md-open="menu.isOpen"
+                               class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': menu.hover }"
+                               ng-mouseenter="menu.isOpen=true" ng-mouseleave="menu.isOpen=false"
+                               id = "fabSpeedDialMenu">
+                <md-fab-trigger>
+                    <md-button aria-label="menu" class="md-fab">
+                        <md-icon md-svg-icon="menu" aria-label="Menu"></md-icon>
+                    </md-button>
+                </md-fab-trigger>
+                <md-fab-actions>
+                    <div ng-repeat="item in menu.items">
+                        <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
+                                   href="{{item.link}}">
+                            <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
+                                        md-autohide="false">
+                                {{item.name}}
+                            </md-tooltip>
+                            <md-icon md-svg-icon="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
+                        </md-button>
+                    </div>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
+        <md-content layout = "column">
+            <md-toolbar class="md-hue-2">
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <span id = "toolbarTitle">{{ titleBar }}</span>
+                    </h2>
+                    <span flex></span>
+                    <a ng-hide="logoutHide" href="/logout">Logout</a>
+                    <md-button ng-hide="logoutIconHide" class="md-icon-button" aria-label="Logout" href="/logout">
+                        <md-icon md-svg-icon="logout"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+        </md-content>
+    </div>
+    
     <div layout="column" ng-view></div>
 
 </body>
