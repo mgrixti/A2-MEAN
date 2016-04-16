@@ -1,36 +1,51 @@
-<div layout="column" layout-align="" ng-cloak>
-    <md-card class = "md-whiteframe-20dp" flex>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">About Page</span>
-                <span class="md-subhead">The place where we show you who we plagiarized and how we used plagiarized said content</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
-            We used Angular material to build the entire site. Some of our third party apps will be referenced on the 3rd Party Resource Card
-        </md-card-content>
-    </md-card>
-    <md-card class = "md-whiteframe-20dp" flex>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Git Repository</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
-            <a href="https://github.com/abcd134/A2-MEAN">Git Hub Link</a>
-            <br/>
-            <a href="https://github.com/abcd134/A2-MEAN.git">Git Link HTTPS</a>
-            <br/>
-            <a href="git@github.com:abcd134/A2-MEAN.git">SSH</a>
-        </md-card-content>
-    </md-card>
-    <md-card class = "md-whiteframe-20dp" flex>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Group Members</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
+<div layout="row" layout-align="" ng-cloak>
+    <div flex layout="column">
+        <div>
+            <md-card class = "md-whiteframe-20dp" flex>
+                <md-toolbar class="md-accent">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">About Project</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-toolbar>
+                <md-card-content>
+                    This website created as an assignment for COMP-4513 at Mount Royal University taught by Randy Connolly.
+                    We used Angular material to build the entire site. Some of our third party apps will be referenced on the 3rd Party Resource Card
+                </md-card-content>
+            </md-card>
+        </div>
+
+        <div>
+            <md-card class = "md-whiteframe-20dp" flex>
+                <md-toolbar class="md-accent">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Git Repository</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-toolbar>
+                <md-card-content>
+                    <a href="https://github.com/abcd134/A2-MEAN">Git Hub Link</a>
+                    <br/>
+                    <a href="https://github.com/abcd134/A2-MEAN.git">Git Link HTTPS</a>
+                    <br/>
+                    <a href="git@github.com:abcd134/A2-MEAN.git">SSH</a>
+                </md-card-content>
+            </md-card>
+        </div>
+    </div>
+
+    <div flex layout="column">
+        <md-card class = "md-whiteframe-20dp" flex>
+            <md-toolbar class="md-accent">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Group Members</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-toolbar>
+            <md-card-content>
                 <p>Joseph Balatbat - Login Page and Styling</p>
                 <p>Matthew Grixti - API, Sessions, node back end, books api</p>
                 <p>Philip Young - Styling, views, site functionality (front end) </p>
@@ -38,15 +53,20 @@
                 <p>Second Cup Coffee - Energy</p>
                 <p>Starbucks Triple Shot Esspresso  - When Coffee isn't enough</p>
                 <p>Starbucks Tea  - Our attempt to be "healthy"</p>
-        </md-card-content>
-    </md-card>
-    <md-card class = "md-whiteframe-20dp" flex>
-        <md-card-title>
-            <md-card-title-text>
-                <span class="md-headline">Reference</span>
-            </md-card-title-text>
-        </md-card-title>
-        <md-card-content>
+            </md-card-content>
+        </md-card>
+    </div>
+
+    <div flex layout="column">
+        <md-card class = "md-whiteframe-20dp" flex>
+            <md-toolbar class="md-accent">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">3rd Party Resources</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-toolbar>
+            <md-card-content>
                 <p><a href="https://nodejs.org/en/">Node.JS Components</a></p>
                 <p><a href="http://bower.io/">Bower - Package Manager</a></p>
                 <p><a href="https://www.npmjs.com/">NPM - Package Manager</a></p>
@@ -59,7 +79,8 @@
                 <p><a href="https://github.com/daniel-nagy/md-data-table">Angular Tables</a></p>
                 <p><a href="https://material.angularjs.org/latest/">Angular Material</a></p>
                 <p><a href="https://materialdesignicons.com/">Material Icons</a></p>
-                <p><a href="https://developers.google.com/">Google API</a></p>
-        </md-card-content>
-    </md-card>
+                <p><a href="https://developers.google.com/books/">Google API</a></p>
+            </md-card-content>
+        </md-card>
+    </div>
 </div>
