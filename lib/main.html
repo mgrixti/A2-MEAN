@@ -1,20 +1,19 @@
 <div ng-controller="mainController" ng-show="showContent">
     <div ng-controller="mainController" ng-show="showContent">
-        <div layout="column" ng-controller="DemoCtrl as demo" ng-cloak>
-            <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" md-open="demo.isOpen"
-                               class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': demo.hover }"
-                               ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"
+        <div layout="column" ng-controller="menuCtrl as menu" ng-cloak>
+            <md-fab-speed-dial ng-hide="menu.hidden" md-direction="down" md-open="menu.isOpen"
+                               class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': menu.hover }"
+                               ng-mouseenter="menu.isOpen=true" ng-mouseleave="menu.isOpen=false"
                                id = "fabSpeedDialMenu">
                 <md-fab-trigger>
                     <md-button aria-label="menu" class="md-fab md-warn">
-                        <md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
                         <md-icon md-svg-icon="menu" aria-label="Menu"></md-icon>
                     </md-button>
                 </md-fab-trigger>
                 <md-fab-actions>
-                    <div ng-repeat="item in demo.items">
+                    <div ng-repeat="item in menu.items">
                         <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
-                                   ng-click="demo.openDialog($event, item)">
+                                   ng-click="menu.openDialog($event, item)">
                             <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
                                         md-autohide="false">
                                 {{item.name}}
@@ -24,7 +23,7 @@
                     </div>
                 </md-fab-actions>
             </md-fab-speed-dial>
-            <md-content layout = "column" class="md-padding" ng-controller="DemoCtrl as demo">
+            <md-content layout = "column">
                 <md-toolbar class="md-hue-2">
                     <div class="md-toolbar-tools">
                         <h2>
