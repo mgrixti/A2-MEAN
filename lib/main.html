@@ -1,20 +1,19 @@
 <div ng-controller="mainController" ng-show="showContent">
     <div ng-controller="mainController" ng-show="showContent">
-        <div layout="column" ng-controller="DemoCtrl as demo" ng-cloak>
-            <md-fab-speed-dial ng-hide="demo.hidden" md-direction="down" md-open="demo.isOpen"
-                               class="md-scale md-fab-top-left onTop" ng-class="{ 'md-hover-full': demo.hover }"
-                               ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false"
+        <div layout="column" ng-controller="menuCtrl as menu" ng-cloak>
+            <md-fab-speed-dial ng-hide="menu.hidden" md-direction="down" md-open="menu.isOpen"
+                               class="md-scale md-fab-top-left" ng-class="{ 'md-hover-full': menu.hover }"
+                               ng-mouseenter="menu.isOpen=true" ng-mouseleave="menu.isOpen=false"
                                id = "fabSpeedDialMenu">
                 <md-fab-trigger>
                     <md-button aria-label="menu" class="md-fab md-warn">
-                        <md-tooltip md-direction="top" md-visible="tooltipVisible">Menu</md-tooltip>
                         <md-icon md-svg-icon="menu" aria-label="Menu"></md-icon>
                     </md-button>
                 </md-fab-trigger>
                 <md-fab-actions>
-                    <div ng-repeat="item in demo.items">
+                    <div ng-repeat="item in menu.items">
                         <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
-                                   ng-click="demo.openDialog($event, item)">
+                                   ng-click="menu.openDialog($event, item)">
                             <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
                                         md-autohide="false">
                                 {{item.name}}
@@ -24,11 +23,11 @@
                     </div>
                 </md-fab-actions>
             </md-fab-speed-dial>
-            <md-content layout = "column" class="md-padding" ng-controller="DemoCtrl as demo">
+            <md-content layout = "column">
                 <md-toolbar class="md-hue-2">
                     <div class="md-toolbar-tools">
                         <h2>
-                            <span id = "toolbarTitle">MEAN Stack Manager - Welcome, username!</span>
+                            <span id = "toolbarTitle">Employee Dashboard - Welcome, {{ username }}!</span>
                         </h2>
                         <span flex></span>
                         <a href="/logout">Logout</a>
@@ -44,15 +43,15 @@
             <div flex>
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header >
-                            <md-card-header-text >
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('todo')">
+                            <md-card-header-text>
                                 <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
                                 <span class="md-subhead">Add and view items</span>
                             </md-card-header-text>
 
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="todoToggle">
                         <script type="text/javascript" src="todo.js"></script>
                         <div ng-include="'todo.html'"></div>
                     </md-card-content>
@@ -60,14 +59,14 @@
 
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header>
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('books')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
                                 <span class="md-subhead">Click headings to sort</span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="booksToggle">
                         <script type="text/javascript" src="js/books.js"></script>
                         <div ng-include="'books.html'"></div>
                     </md-card-content>
@@ -76,14 +75,14 @@
             <div flex>
                 <md-card class = "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header>
+                        <md-card-header class="mouseToggle" ng-click="toggleContent ('messages')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
                                 <span class="md-subhead"></span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="messagesToggle">
                         <script type="text/javascript" src="js/messages.js"></script>
                         <div ng-include="'messages.html'"></div>
                     </md-card-content>

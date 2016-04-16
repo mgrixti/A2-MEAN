@@ -1,8 +1,12 @@
 #fabSpeedDialMenu{
     top:0px;
-    left:0px
+    left:0px;
 }
 
 #toolbarTitle{
-    padding-left: 50px;
+    padding-left: 55px;
+}
+
+.mouseToggle{
+	cursor: pointer;
 }
