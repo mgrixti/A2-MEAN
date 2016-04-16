@@ -13,7 +13,7 @@
                 <md-fab-actions>
                     <div ng-repeat="item in menu.items">
                         <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
-                                   ng-click="menu.openDialog($event, item)">
+                                   href="{{item.link}}">
                             <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
                                         md-autohide="false">
                                 {{item.name}}
@@ -62,7 +62,7 @@
                         <md-card-header class="mouseToggle" ng-click="toggleContent ('books')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
-                                <span class="md-subhead">Click headings to sort</span>
+                                <span class="md-subhead">Sort by clicking headings</span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
@@ -78,7 +78,7 @@
                         <md-card-header class="mouseToggle" ng-click="toggleContent ('messages')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
-                                <span class="md-subhead"></span>
+                                <span class="md-subhead">Messages for {{ username }}</span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
