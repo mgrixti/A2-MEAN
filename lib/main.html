@@ -44,15 +44,15 @@
             <div flex>
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header >
-                            <md-card-header-text >
+                        <md-card-header ng-click="toggleContent ('todo')">
+                            <md-card-header-text>
                                 <span class="md-title" layout-align="start center"><md-icon md-svg-icon="checkbox-multiple-marked-outline"></md-icon> To Do List</span>
                                 <span class="md-subhead">Add and view items</span>
                             </md-card-header-text>
 
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="todoToggle">
                         <script type="text/javascript" src="todo.js"></script>
                         <div ng-include="'todo.html'"></div>
                     </md-card-content>
@@ -60,14 +60,14 @@
 
                 <md-card class= "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header>
+                        <md-card-header ng-click="toggleContent ('books')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="book-multiple"></md-icon> Book List</span>
                                 <span class="md-subhead">Click headings to sort</span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="booksToggle">
                         <script type="text/javascript" src="js/books.js"></script>
                         <div ng-include="'books.html'"></div>
                     </md-card-content>
@@ -76,14 +76,14 @@
             <div flex>
                 <md-card class = "md-whiteframe-20dp">
                     <md-toolbar class="md-accent">
-                        <md-card-header>
+                        <md-card-header ng-click="toggleContent ('messages')">
                             <md-card-header-text>
                                 <span class="md-title"><md-icon md-svg-icon="message-text-outline"></md-icon> Messages</span>
                                 <span class="md-subhead"></span>
                             </md-card-header-text>
                         </md-card-header>
                     </md-toolbar>
-                    <md-card-content>
+                    <md-card-content ng-hide="messagesToggle">
                         <script type="text/javascript" src="js/messages.js"></script>
                         <div ng-include="'messages.html'"></div>
                     </md-card-content>
